@@ -1,0 +1,27 @@
+<div id ="sig">Song Index </div>
+
+<%= form_tag songs_path, :method => 'get' do %>
+	<p>
+	  <%= text_field_tag :search, params[:search] %>
+	  <%= submit_tag "Search", {:name => nil,:class => "button"} %>
+    <%= link_to "clear",songs_path,:class =>"text" %>
+	</p>
+  <% end %>
+
+<div class = "text"><%= link_to 'add song', new_song_path %></div>
+
+<table>
+  <tr class = "text">
+    <th>Title</th>
+    <th colspan ="1"></th>
+  </tr>
+
+  <% @songs.each do |song| %>
+  	<tr class = "text">
+      <td><%= link_to song.title, song_path(song) %></td>
+      <td><b><%= link_to 'x', song_path(song),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }%></td>
+    </tr>
+ <% end %>
+</table>

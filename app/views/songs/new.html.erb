@@ -1,0 +1,27 @@
+<h1> New Song Entry </h1>
+
+<%= form_tag songs_path :method => 'post' do %>
+  <p>
+    <li class = "text"> Title </li>
+    <%= text_field_tag :title, params[:title] %><br>
+  </p>
+  <p>
+    <li class = "text"> Transitions</li>
+    <%= text_field_tag "trans[]" %><br>
+    <%= text_field_tag "trans[]" %><br>
+    <%= text_field_tag "trans[]" %><br>
+    <%= text_field_tag "trans[]" %><br>
+    <%= text_field_tag "trans[]" %><br>
+    <% (0..@counter).each do |i| %>
+      <%= text_field_tag "trans[]" %><br>
+    <% end %>
+    <%= link_to "add", {:controller => "songs", :action => "new", :count => 'add'},:class =>"inner_text" %>
+  </p>
+
+  <p>
+    <%= submit_tag "create", {:name => nil,:class =>"button"} %>
+  </p>
+  <% end %>
+
+
+<%= link_to 'back',songs_path,:class =>"inner_text" %>

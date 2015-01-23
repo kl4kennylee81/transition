@@ -1,0 +1,30 @@
+<div id = "sig"><%= @song.title %></div>
+<p><% @song.transitions %></p>
+
+<h1> Transitions </h1>
+
+<table>
+<%= form_tag song_path(@song.id), :method => 'put' do %>
+	<li class = "text"><%= link_to "add transitions",song_path(@song,:count => "value1") %></li>
+	<% (0..@adding).each do |i| %>
+	   <%= text_field_tag "trans[]" %><br>
+    <% end %>
+	  <% @link_transitions.each do |t| %>
+		    <tr>
+		     <td class = "text"><%= link_to t.title, song_path(t),{:count => 'add'} %></td>
+		     <td><%= check_box_tag "songs[]", t.title %></td>
+		    </tr>
+	  <% end %>
+	  <% @no_links.each do |t| %>
+	    <tr>
+	    <td class = "inner_text"> <%= t %> </td>
+	    <td> <%= check_box_tag "songs[]", t%> </td>
+	    </tr>
+	  <% end %>
+</table>
+    <br>
+	<li><%= submit_tag "update/delete", {:name => nil,:class => "button"} %></li>
+<% end %>
+
+
+<%= link_to 'back',songs_path,:class =>"text" %>
