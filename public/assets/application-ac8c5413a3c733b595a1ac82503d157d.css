@@ -10,13 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
  #sig {
 	font-family: 'Warnes', cursive;
-    font-size: 50px;
+    font-size: 54px;
 }
 
 h1 {
